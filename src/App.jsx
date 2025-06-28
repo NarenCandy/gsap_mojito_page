@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
+import Cocktails from './components/Cocktails'
 
 
 
@@ -13,7 +14,7 @@ const App = () => {
     <div>
     <NavBar />
     <Hero />
-    <div className='h-dvh bg-black'/>
+    <Cocktails />
     </div>
     
   )
