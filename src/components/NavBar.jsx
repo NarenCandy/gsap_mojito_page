@@ -1,45 +1,62 @@
-import { useRef } from 'react';
+
+import { navLinks } from '../constants/index.js';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { navLinks } from '../constants/index.js';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
-const Navbar = () => {
-  const navRef = useRef(null);
+gsap.registerPlugin(ScrollTrigger);
 
-  useGSAP(() => {
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: navRef.current,
-        start: 'top top',
-        end: '+=100',
-        scrub: true,
-      }
-    }).to(navRef.current, {
-      backgroundColor: '#00000050',
-      backdropFilter: 'blur(10px)',
-      duration: 1,
-      ease: 'power1.inOut'
-    });
-  }, []);
+const NavBar = () => {
+    useGSAP(()=>{
+        const navTween= gsap.timeline({
+            scrollTrigger:{
+                trigger:'nav',
+                start:'bottom top',
+            }
+        });
 
+        navTween.fromTo('nav',{backgroundColor:'transparent'},{
+            backgroundColor: '#00000050',
+            backgroundFilter: 'blur(10px)',
+            duration:1,
+            ease:'power1.inOut'
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        })
+    
   return (
-    <nav ref={navRef} className="fixed w-full top-0 z-50 bg-transparent transition-all duration-300">
-      <div className="flex justify-between items-center px-4 py-2">
-        <a href="#home" className="flex items-center gap-2">
-          <img src="/images/logo.png" alt="logo" className="h-8" />
-          <p className="text-white font-bold">Velvet Pour</p>
-        </a>
-
-        <ul className="flex gap-4">
-          {navLinks.map((link) => (
-            <li key={link.id}>
-              <a href={`#${link.id}`} className="text-white hover:underline">{link.title}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <nav>
+        <div>
+            <a href='#home' className='flex items-center gap-2'>
+                <img src="/images/logo.png" alt="logo" />
+                <p>Blaze Drinks</p>
+                </a>
+            <ul>
+                {navLinks.map((link)=>(
+                    <li key={link.id}>
+                        
+                        <a href={`#${link.id}`}>{link.title}</a>
+                    </li>
+                ))}
+            </ul>
+        </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default NavBar
