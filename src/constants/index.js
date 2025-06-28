@@ -4,12 +4,12 @@ const navLinks = [
 	title: "Cocktails",
  },
  {
-	id: "about",
-	title: "About Us",
+	id: "art",
+	title: "The Art",
  },
  {
-	id: "work",
-	title: "The Art",
+	id: "menu",
+	title: "Menu",
  },
  {
 	id: "contact",
@@ -134,7 +134,7 @@ const socials = [
  },
 ];
 
-const sliderLists = [
+const allCocktails = [
  {
 	id: 1,
 	name: "Classic Mojito",
@@ -179,5 +179,5 @@ export {
  openingHours,
  storeInfo,
  socials,
- sliderLists,
+ allCocktails,
 };
